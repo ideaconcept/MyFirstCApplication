@@ -1,0 +1,1 @@
+﻿Console.WriteLine("Cześć Jacku!");
