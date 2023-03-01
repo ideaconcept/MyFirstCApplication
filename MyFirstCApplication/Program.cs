@@ -1,47 +1,63 @@
 ﻿// Deklaracja zmiennych
-string name = "Ewa";
-int age = 17;
-char sex = 'M';
+int number = 256965200;
 
 // Wyświetl dane wejściowe
-Console.WriteLine("Dane wejściowe:");
-Console.WriteLine("Imie osoby: " + name);
-Console.WriteLine("Wiek osoby: " + age + " lat");
-if (sex == 'K')
-{
-    Console.WriteLine("Płeć: Kobieta");
-}
-else
-{
-    Console.WriteLine("Płeć: Mężczyzna");
- }
+Console.WriteLine("Wprowadzona liczba: " + number + " zawiera:");
 
-// Wyświetl wynik analizy danych
-Console.WriteLine(" ");
-Console.WriteLine("Wynik analizy danych:");
-if (sex == 'K')
+// Analiza danych
+//Kod nie rozwiązuje "problemu" podania jako pierwszej lizby zera 0, która jest pomijana przy konwersji do stringa :-)
+string numberInString = number.ToString();
+char[] letters = numberInString.ToCharArray();
+int[] result = new int[10]; //Użyłem tablicy z uwagi na skończoną liczbę elementów -> cyfr 0-9
+int petle = numberInString.Length;
+
+for (var i = 0; i < petle; i++)
 {
-    if (age < 30)
+    if (letters[i] == '0')
     {
-        Console.WriteLine("Kobieta poniżej 30 lat");
+        result[0] = result[0] + 1;
     }
-    else if (age == 33 && name == "Ewa")
+    else if (letters[i] == '1')
     {
-        Console.WriteLine("Ewa, lat 33");
+        result[1] = result[1] + 1;
+    }
+    else if (letters[i] == '2')
+    {
+        result[2] = result[2] + 1;
+    }
+    else if (letters[i] == '3')
+    {
+        result[3] = result[3] + 1;
+    }
+    else if (letters[i] == '4')
+    {
+        result[4] = result[4] + 1;
+    }
+    else if (letters[i] == '5')
+    {
+        result[5] = result[5] + 1;
+    }
+    else if (letters[i] == '6')
+    {
+        result[6] = result[6] + 1;
+    }
+    else if (letters[i] == '7')
+    {
+        result[7] = result[7] + 1;
+    }
+    else if (letters[i] == '8')
+    {
+        result[8] = result[8] + 1;
     }
     else
     {
-        Console.WriteLine("Wprowadzone dane nie spełniają zadanych kryteriów analizy. Zmień dane wejściowe.");
-    }
- }
-else
-{
-    if (age < 18)
-    {
-        Console.WriteLine("Niepełnoletni Mężczyzna");
-    }
-    else
-    {
-        Console.WriteLine("Wprowadzone dane nie spełniają zadanych kryteriów analizy. Zmień dane wejściowe.");
+        result[9] = result[9] + 1;
     }
 }
+//Wyświetlenie wyniku
+Console.WriteLine("\n");
+for (var i = 0; i < 10; i++)
+{
+    Console.WriteLine("Liczba " + i + " występuje " + result[i] + " razy");
+}
+Console.WriteLine("\n");
