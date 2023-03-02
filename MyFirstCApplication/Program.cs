@@ -1,63 +1,41 @@
-﻿// Deklaracja zmiennych
-int number = 256965200;
+﻿using MyFirstCApplication;
 
-// Wyświetl dane wejściowe
-Console.WriteLine("Wprowadzona liczba: " + number + " zawiera:");
+//Dodanie danych
+Employee employee1 = new Employee("Jan", "Kowalski", 44);
+Employee employee2 = new Employee("Anna", "Nowakowska", 26);
+Employee employee3 = new Employee("Piotr", "Kałuża", 62);
 
-// Analiza danych
-//Kod nie rozwiązuje "problemu" podania jako pierwszej lizby zera 0, która jest pomijana przy konwersji do stringa :-)
-string numberInString = number.ToString();
-char[] letters = numberInString.ToCharArray();
-int[] result = new int[10]; //Użyłem tablicy z uwagi na skończoną liczbę elementów -> cyfr 0-9
-int petle = numberInString.Length;
+employee1.AddScore(9);
+employee1.AddScore(5);
+employee1.AddScore(10);
+employee1.AddScore(5);
+employee1.AddScore(4);
 
-for (var i = 0; i < petle; i++)
+employee2.AddScore(10);
+employee2.AddScore(8);
+employee2.AddScore(5);
+employee2.AddScore(4);
+employee2.AddScore(7);
+
+employee3.AddScore(10);
+employee3.AddScore(7);
+employee3.AddScore(9);
+employee3.AddScore(4);
+employee3.AddScore(10);
+
+//Analiza i podanie wyniku
+if (employee1.Result >= employee2.Result && employee1.Result >= employee3.Result)
 {
-    if (letters[i] == '0')
+    Console.WriteLine("Osoba o najwyższym wyniku: " + employee1.Name + " " + employee1.Surname + ", lat " + employee1.Age + ", wynik: " + employee1.Result);
+}
+else
+{
+    if (employee2.Result >= employee1.Result && employee2.Result >= employee3.Result)
     {
-        result[0] = result[0] + 1;
-    }
-    else if (letters[i] == '1')
-    {
-        result[1] = result[1] + 1;
-    }
-    else if (letters[i] == '2')
-    {
-        result[2] = result[2] + 1;
-    }
-    else if (letters[i] == '3')
-    {
-        result[3] = result[3] + 1;
-    }
-    else if (letters[i] == '4')
-    {
-        result[4] = result[4] + 1;
-    }
-    else if (letters[i] == '5')
-    {
-        result[5] = result[5] + 1;
-    }
-    else if (letters[i] == '6')
-    {
-        result[6] = result[6] + 1;
-    }
-    else if (letters[i] == '7')
-    {
-        result[7] = result[7] + 1;
-    }
-    else if (letters[i] == '8')
-    {
-        result[8] = result[8] + 1;
+        Console.WriteLine("Osoba o najwyższym wyniku: " + employee2.Name + " " + employee2.Surname + ", lat " + employee2.Age + ", wynik: " + employee2.Result);
     }
     else
     {
-        result[9] = result[9] + 1;
+        Console.WriteLine("Osoba o najwyższym wyniku: " + employee3.Name + " " + employee3.Surname + ", lat " + employee3.Age + ", wynik: " + employee3.Result);
     }
 }
-//Wyświetlenie wyniku
-Console.WriteLine("\n");
-for (var i = 0; i < 10; i++)
-{
-    Console.WriteLine("Liczba " + i + " występuje " + result[i] + " razy");
-}
-Console.WriteLine("\n");
