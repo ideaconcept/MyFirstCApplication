@@ -21,21 +21,25 @@ employee3.AddScore(10);
 employee3.AddScore(7);
 employee3.AddScore(9);
 employee3.AddScore(4);
-employee3.AddScore(10);
+employee3.AddScore(1);
 
 //Analiza i podanie wyniku
+Employee TheBestOff = null;
+
 if (employee1.Result >= employee2.Result && employee1.Result >= employee3.Result)
 {
-    Console.WriteLine("Osoba o najwyższym wyniku: " + employee1.Name + " " + employee1.Surname + ", lat " + employee1.Age + ", wynik: " + employee1.Result);
+    TheBestOff = employee1;
 }
 else
 {
     if (employee2.Result >= employee1.Result && employee2.Result >= employee3.Result)
     {
-        Console.WriteLine("Osoba o najwyższym wyniku: " + employee2.Name + " " + employee2.Surname + ", lat " + employee2.Age + ", wynik: " + employee2.Result);
+        TheBestOff = employee2;
     }
     else
     {
-        Console.WriteLine("Osoba o najwyższym wyniku: " + employee3.Name + " " + employee3.Surname + ", lat " + employee3.Age + ", wynik: " + employee3.Result);
-    }
+        TheBestOff = employee3;
+     }
 }
+
+Console.WriteLine("Osoba o najwyższym wyniku: " + TheBestOff.Name + " " + TheBestOff.Surname + ", lat " + TheBestOff.Age + ", wynik: " + TheBestOff.Result);
