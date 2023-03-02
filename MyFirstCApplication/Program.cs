@@ -1,9 +1,9 @@
 ﻿using MyFirstCApplication;
 
 //Dodanie danych
-Employee employee1 = new Employee("Jan", "Kowalski", 44);
-Employee employee2 = new Employee("Anna", "Nowakowska", 26);
-Employee employee3 = new Employee("Piotr", "Kałuża", 62);
+var employee1 = new Employee("Jan", "Kowalski", 44);
+var employee2 = new Employee("Anna", "Nowakowska", 26);
+var employee3 = new Employee("Piotr", "Kałuża", 62);
 
 employee1.AddScore(9);
 employee1.AddScore(5);
@@ -17,11 +17,11 @@ employee2.AddScore(5);
 employee2.AddScore(4);
 employee2.AddScore(7);
 
-employee3.AddScore(10);
-employee3.AddScore(7);
-employee3.AddScore(9);
-employee3.AddScore(4);
 employee3.AddScore(1);
+employee3.AddScore(2);
+employee3.AddScore(1);
+employee3.AddScore(3);
+employee3.AddScore(10);
 
 //Analiza i podanie wyniku
 Employee TheBestOff = null;
@@ -42,4 +42,4 @@ else
      }
 }
 
-Console.WriteLine("Osoba o najwyższym wyniku: " + TheBestOff.Name + " " + TheBestOff.Surname + ", lat " + TheBestOff.Age + ", wynik: " + TheBestOff.Result);
+Console.WriteLine("Osoba o najwyższym wyniku: " + TheBestOff.Name + " " + TheBestOff.Surname + ", lat " + TheBestOff.Age + ", wynik: " + TheBestOff.Result);      
