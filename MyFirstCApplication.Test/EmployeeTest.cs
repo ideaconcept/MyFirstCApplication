@@ -1,6 +1,6 @@
 namespace MyFirstCApplication.Test
 {
-    public class Tests
+    public class EmployeeTest
     {
         [Test]
         public void AddingRatings()
