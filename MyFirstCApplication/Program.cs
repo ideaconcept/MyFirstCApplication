@@ -23,23 +23,5 @@ employee3.AddScore(1);
 employee3.AddScore(3);
 employee3.AddScore(10);
 
-//Analiza i podanie wyniku
-Employee TheBestOff = null;
-
-if (employee1.Result >= employee2.Result && employee1.Result >= employee3.Result)
-{
-    TheBestOff = employee1;
-}
-else
-{
-    if (employee2.Result >= employee1.Result && employee2.Result >= employee3.Result)
-    {
-        TheBestOff = employee2;
-    }
-    else
-    {
-        TheBestOff = employee3;
-     }
-}
-
-Console.WriteLine("Osoba o najwyższym wyniku: " + TheBestOff.Name + " " + TheBestOff.Surname + ", lat " + TheBestOff.Age + ", wynik: " + TheBestOff.Result);      
+var statistics = employee1.GetStatistics();
+statistics.Min
