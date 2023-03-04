@@ -16,10 +16,45 @@
         public string Surname { get; private set; }
         public int Age { get; private set; }
         
+        public void AddGrade(float grade)
+        {
+            if(grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade);
+            }
+            else
+            { 
+                Console.WriteLine("Wprowadzona ocena wykracza poza dopuszczalny zakres wartości: od 0 do 100.");
+            }
+        }
+        
+        public void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("Wprowadzona ocena nie jest wartością numeryczną.");
+            }
+                       
+        }
+
+        public void AddGrade(double grade)
+        {
+            float resultDouble = (float)grade;
+            this.AddGrade(resultDouble);
+        
+        }
+
         public void AddGrade(int grade)
         {
-            this.grades.Add(grade);
+            float resultInt = grade;
+            this.AddGrade(resultInt);
+
         }
+
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();

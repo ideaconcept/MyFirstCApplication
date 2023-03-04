@@ -8,23 +8,23 @@ namespace MyFirstCApplication.Test
             var employee = new Employee("Adam", "Nowak", 38);
             employee.AddGrade(8);
             employee.AddGrade(7);
-            employee.AddGrade(101);
+            employee.AddGrade(99);
 
             var statistics = employee.GetStatistics();
             var result = statistics.Max;
-            Assert.That(result, Is.EqualTo(101));
+            Assert.That(result, Is.EqualTo(99));
          }
         [Test]
         public void MinOfGrades()
         {
             var employee = new Employee("Adam", "Nowak", 38);
             employee.AddGrade(8);
-            employee.AddGrade(-2);
-            employee.AddGrade(-10);
+            employee.AddGrade(20);
+            employee.AddGrade(82);
 
             var statistics = employee.GetStatistics();
             var result = statistics.Min;
-            Assert.That(result, Is.EqualTo(-10));
+            Assert.That(result, Is.EqualTo(8));
         }
         [Test]
         public void AverageOfGrades()
