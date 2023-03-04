@@ -1,6 +1,6 @@
 ﻿namespace MyFirstCApplication
 {
-    internal class Statistics
+    public class Statistics
     {
         public float Min { get; set; }
 
