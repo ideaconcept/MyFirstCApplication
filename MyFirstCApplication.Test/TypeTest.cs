@@ -9,7 +9,7 @@
             var employee2 = GetEmployee("Jianna", "Nowak", 39);
             var employee3 = GetEmployee("Paweł", "Nowak", 42);
 
-            Assert.AreNotEqual(employee2, employee3);
+            Assert.That(employee3, Is.Not.EqualTo(employee2));
 
         }
 
@@ -24,7 +24,7 @@
             int number1 = 132;
             int number2 = 132;
 
-            Assert.AreEqual(number1, number2);
+            Assert.That(number2, Is.EqualTo(number1));
 
         }
 
@@ -34,7 +34,7 @@
             string name1 = "Jacek";
             string name2 = "Jacek";
 
-            Assert.AreEqual(name1, name2);
+            Assert.That(name2, Is.EqualTo(name1));
 
         }
     }
