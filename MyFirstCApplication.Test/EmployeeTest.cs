@@ -30,13 +30,13 @@ namespace MyFirstCApplication.Test
         public void AverageOfGrades()
         {
             var employee = new Employee("Adam", "Nowak", 38);
-            employee.AddGrade(8);
-            employee.AddGrade(-2);
-            employee.AddGrade(-9);
+            employee.AddGrade(2);
+            employee.AddGrade(2);
+            employee.AddGrade(6);
 
             var statistics = employee.GetStatistics();
-            var result = statistics.Average;
-            Assert.That(result, Is.EqualTo(-1));
+            var result = Math.Round(statistics.Average, 2);
+            Assert.That(result, Is.EqualTo(Math.Round(3.33, 2)));
         }
         [Test]
         public void AddNewEmployee()
