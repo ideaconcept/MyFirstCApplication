@@ -37,21 +37,44 @@
             else
             {
                 Console.WriteLine("Wprowadzona ocena nie jest wartością numeryczną.");
-            }
-                       
+            }                  
         }
 
         public void AddGrade(double grade)
         {
             float resultDouble = (float)grade;
             this.AddGrade(resultDouble);
-        
+        }
+
+        public void AddGrade(long grade)
+        {
+            float resultLong = (float)grade;
+            this.AddGrade(resultLong);
+        }
+
+        public void AddGrade(decimal grade)
+        {
+            float resultDecimal = (float)grade;
+            this.AddGrade(resultDecimal);
         }
 
         public void AddGrade(int grade)
         {
             float resultInt = grade;
             this.AddGrade(resultInt);
+        }
+
+        public void AddGrade(char grade)
+        {
+            float resultChar = (float)grade;
+            if (resultChar >= 64 && resultChar <= 87)
+            {
+                this.AddGrade(resultChar - 64);
+            }
+            else
+            {
+                Console.WriteLine("Wprowadzona ocena nie jest wartością numeryczną. Wprowadziłeś znak.");
+            }
 
         }
 

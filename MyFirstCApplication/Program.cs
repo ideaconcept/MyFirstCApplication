@@ -8,6 +8,8 @@ employee.AddGrade(5);
 employee.AddGrade(101);
 employee.AddGrade("1,78");
 employee.AddGrade("Karolina");
+employee.AddGrade('9');
+employee.AddGrade(1.69754);
 
 var statistics = employee.GetStatistics();
 
