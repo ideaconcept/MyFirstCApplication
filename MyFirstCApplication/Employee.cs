@@ -26,7 +26,7 @@ namespace MyFirstCApplication
             }
             else
             {
-                Console.WriteLine("Wprowadzona ocena wykracza poza dopuszczalny zakres wartości: od 0 do 100.");
+                throw new Exception("Wprowadzona ocena wykracza poza dopuszczalny zakres wartości: od 0 do 100.");
             }
         }
         
@@ -61,8 +61,7 @@ namespace MyFirstCApplication
                         this.grades.Add(20);
                         break;
                     default:
-                        Console.WriteLine("Wprowadzona ocena nie jest dopuszczalną literą z zakresu A - E (a - e).");
-                        break;
+                        throw new Exception("Wprowadzona ocena nie jest dopuszczalną literą z zakresu A - E (a - e).");
                 }
             }                  
         }
@@ -89,31 +88,6 @@ namespace MyFirstCApplication
         {
             float resultInt = grade;
             this.AddGrade(resultInt);
-        }
-
-        public void AddGrade(char grade)
-        {
-            switch (grade)
-            {
-                case 'A':
-                    this.grades.Add(100);
-                    break;
-                case 'B':
-                    this.grades.Add(80);
-                    break;
-                case 'C':
-                    this.grades.Add(60);
-                    break;
-                case 'D':
-                    this.grades.Add(40);
-                    break;
-                case 'E':
-                    this.grades.Add(20);
-                    break;
-                default:    
-                    Console.WriteLine("Wprowadzona ocena nie jest dopuszczalną literą.");
-                    break;
-            }
         }
 
         public Statistics GetStatistics()

@@ -12,13 +12,22 @@ while (true)
 {
     Console.WriteLine("Wprowadź ocenę pracownika: ");
     var ocena = Console.ReadLine();
+    ocena = ocena.Replace(".", ",");
+
     if(ocena == "q")
     {
         break;
     }
-    employee.AddGrade(ocena);
- }
 
+    try
+    {
+        employee.AddGrade(ocena);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Wystąpił błąd: {e.Message}");
+    }
+ }
 
 var statistics  = employee.GetStatistics();
 Console.WriteLine();
