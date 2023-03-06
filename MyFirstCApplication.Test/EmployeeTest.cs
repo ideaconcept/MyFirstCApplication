@@ -38,6 +38,42 @@ namespace MyFirstCApplication.Test
             var result = Math.Round(statistics.Average, 2);
             Assert.That(result, Is.EqualTo(Math.Round(3.33, 2)));
         }
+
+        [Test]
+        public void AddGradeString()
+        {
+            var employee = new Employee("Adam", "Nowak", 38);
+            employee.AddGrade("100");
+            employee.AddGrade("20");
+
+            var statistics = employee.GetStatistics();
+            var result = Math.Round(statistics.Average, 2);
+            Assert.That(result, Is.EqualTo(Math.Round(60.00, 2)));
+        }
+
+        [Test]
+        public void AddGradeLetterSmallBig()
+        {
+            var employee = new Employee("Adam", "Nowak", 38);
+            employee.AddGrade("A");
+            employee.AddGrade("b");
+
+            var statistics = employee.GetStatistics();
+            var result = Math.Round(statistics.Average, 2);
+            Assert.That(result, Is.EqualTo(Math.Round(90.00, 2)));
+        }
+
+        [Test]
+        public void AddGradeChar()
+        {
+            var employee = new Employee("Adam", "Nowak", 38);
+            employee.AddGrade('B');
+
+            var statistics = employee.GetStatistics();
+            var result = Math.Round(statistics.Average, 2);
+            Assert.That(result, Is.EqualTo(Math.Round(80.00, 2)));
+        }
+
         [Test]
         public void AddNewEmployee()
         {
@@ -45,7 +81,6 @@ namespace MyFirstCApplication.Test
 
             var result = employee.Name + employee.Surname + employee.Age;
             Assert.That(result, Is.EqualTo("AdamNowak38"));
-
         }
 
     }
