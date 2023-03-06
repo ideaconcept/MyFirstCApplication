@@ -2,21 +2,20 @@
 
 namespace MyFirstCApplication
 {
-    public class Employee
+    public class Employee : Person
     {
        
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, int age)
+        public Employee(string name, string surname, int age, char sex, string position, int seniority)
+            : base(name, surname, age, sex)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
+            this.Position = position;
+            this.Seniority = seniority;
         }
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
+        public string Position { get; private set; }
+        public int Seniority { get; private set; }
         
         public void AddGrade(float grade)
         {

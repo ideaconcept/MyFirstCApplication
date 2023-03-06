@@ -1,6 +1,6 @@
 ﻿using MyFirstCApplication;
 
-var employee = new Employee("Jan", "Kowalski", 44);
+var employee = new Employee("Jan", "Kowalski", 44, 'M', "Dyrektor", 12);
 
 Console.WriteLine("Witamy w programie oceny pracowników:");
 Console.WriteLine("=====================================");
