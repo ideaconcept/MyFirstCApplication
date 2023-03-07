@@ -1,6 +1,6 @@
 ﻿using MyFirstCApplication;
 
-var employee = new Employee("Jan", "Kowalski", 44, 'M', "Dyrektor", 12);
+var supervisor = new Supervisor("Jan", "Kowalski", 44, 'M', "Dyrektor", 12);
 
 Console.WriteLine("Witamy w programie oceny pracowników:");
 Console.WriteLine("=====================================");
@@ -21,7 +21,7 @@ while (true)
 
     try
     {
-        employee.AddGrade(ocena);
+        supervisor.AddGrade(ocena);
     }
     catch (Exception e)
     {
@@ -29,9 +29,9 @@ while (true)
     }
  }
 
-var statistics  = employee.GetStatistics();
+var statistics  = supervisor.GetStatistics();
 Console.WriteLine();
-Console.WriteLine($"Wynik oceny pracownika: {employee.Name} {employee.Surname}");
+Console.WriteLine($"Wynik oceny pracownika: {supervisor.Name} {supervisor.Surname}");
 Console.WriteLine($"Średnia ocen: {statistics.Average}");
 Console.WriteLine($"Ocena: {statistics.AverageLetter}");
 Console.WriteLine($"Ocena minimalna: {statistics.Min}");

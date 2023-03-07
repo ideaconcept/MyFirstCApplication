@@ -15,13 +15,41 @@
             this.Seniority = seniority;
         }
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
-        public char Sex { get; private set; }
-        public string Position { get; private set; }
-        public int Seniority { get; private set; }
+        public string Name { get; }
+        public string Surname { get; }
+        public int Age { get; }
+        public char Sex { get; }
+        public string Position { get; }
+        public int Seniority { get; }
 
+        public void AddGrade(string grade)
+        {
+            var gradeToAdd = grade switch //Dogrzebałem się nowej składni w C# 8.0 :-)
+            {
+                "6" => 100,
+                "-6" or "6-" => 95,
+                "+5" or "5+" => 85,
+                "5" => 80,
+                "-5" or "5-" => 75,
+                "+4" or "4+" => 65,
+                "4" => 60,
+                "-4" or "4-" => 55,
+                "+3" or "3+" => 45,
+                "3" => 40,
+                "-3" or "3-" => 35,
+                "+2" or "2+" => 25,
+                "2" => 20,
+                "-2" or "2-" => 15,
+                "+1" or "1+" => 5,
+                "1" => 0,
+                _ when float.TryParse(grade, out float result) => result,
+                _ => throw new Exception("Wprowadzono wartość spoza dopuszczalnego zakresu."),
+            };
+
+            {
+                this.AddGrade(gradeToAdd);
+            }
+        }
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
@@ -31,42 +59,6 @@
             else
             {
                 throw new Exception("Wprowadzona ocena wykracza poza dopuszczalny zakres wartości: od 0 do 100.");
-            }
-        }
-
-        public void AddGrade(string grade)
-        {
-            if (float.TryParse(grade, out float result))
-            {
-                this.AddGrade(result);
-            }
-            else
-            {
-                switch (grade)
-                {
-                    case "A":
-                    case "a":
-                        this.grades.Add(100);
-                        break;
-                    case "B":
-                    case "b":
-                        this.grades.Add(80);
-                        break;
-                    case "C":
-                    case "c":
-                        this.grades.Add(60);
-                        break;
-                    case "D":
-                    case "d":
-                        this.grades.Add(40);
-                        break;
-                    case "E":
-                    case "e":
-                        this.grades.Add(20);
-                        break;
-                    default:
-                        throw new Exception("Wprowadzona ocena nie jest dopuszczalną literą z zakresu A - E (a - e).");
-                }
             }
         }
 

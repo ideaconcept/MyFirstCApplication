@@ -10,9 +10,9 @@
             this.Sex = sex;
         }
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
-        public char Sex { get; private set;}
+        public string Name { get; }
+        public string Surname { get; }
+        public int Age { get; }
+        public char Sex { get;}
     }
 }
