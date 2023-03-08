@@ -1,33 +1,21 @@
-﻿using System;
-
-namespace MyFirstCApplication
+﻿namespace MyFirstCApplication
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
-       
         private List<float> grades = new List<float>();
-
-        public Employee(string name, string surname, int age, char sex, string position, int seniority)
-        
+        public EmployeeInMemory(string name,
+                                string surname,
+                                int age,
+                                char sex,
+                                string position,
+                                int seniority)
+            : base(name, surname, age, sex, position, seniority)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
-            this.Sex = sex;
-            this.Position = position;
-            this.Seniority = seniority;
         }
 
-        public string Name { get; }
-        public string Surname { get; }
-        public int Age { get; }
-        public char Sex { get; }
-        public string Position { get; }
-        public int Seniority { get; }
-        
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
-            if(grade >= 0 && grade <= 100)
+            if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
             }
@@ -36,8 +24,8 @@ namespace MyFirstCApplication
                 throw new Exception("Wprowadzona ocena wykracza poza dopuszczalny zakres wartości: od 0 do 100.");
             }
         }
-        
-        public void AddGrade(string grade)
+
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -70,34 +58,34 @@ namespace MyFirstCApplication
                     default:
                         throw new Exception("Wprowadzona ocena nie jest dopuszczalną literą z zakresu A - E (a - e).");
                 }
-            }                  
+            }
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             float resultDouble = (float)grade;
             this.AddGrade(resultDouble);
         }
 
-        public void AddGrade(long grade)
+        public override void AddGrade(long grade)
         {
             float resultLong = (float)grade;
             this.AddGrade(resultLong);
         }
 
-        public void AddGrade(decimal grade)
+        public override void AddGrade(decimal grade)
         {
             float resultDecimal = (float)grade;
             this.AddGrade(resultDecimal);
         }
 
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             float resultInt = grade;
             this.AddGrade(resultInt);
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -109,7 +97,7 @@ namespace MyFirstCApplication
                 statistics.Max = Math.Max(statistics.Max, grade);
                 statistics.Min = Math.Min(statistics.Min, grade);
                 statistics.Average += grade;
-             }
+            }
 
             statistics.Average /= this.grades.Count;
 
@@ -130,7 +118,7 @@ namespace MyFirstCApplication
                 default:
                     statistics.AverageLetter = 'E';
                     break;
-            } 
+            }
             return statistics;
         }
     }
