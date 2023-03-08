@@ -1,10 +1,8 @@
-﻿using System.Diagnostics;
-
-namespace MyFirstCApplication
+﻿namespace MyFirstCApplication
 {
-
     public class EmployeeInFile : EmployeeBase
     {
+        public override event GradeAddDelegate GradeAdded;
 
         private const string fileName = "grades.txt";
         private int licznik = 0;
@@ -26,11 +24,15 @@ namespace MyFirstCApplication
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
                 }
             }
             else
             {
-                throw new Exception("Wprowadzona ocena wykracza poza dopuszczalny zakres wartości: od 0 do 100.");
+                throw new Exception("Wprowadzona ocena wykracza poza dopuszczalny zakres wartości: od 0 do 100.\n");
             }
         }
 
@@ -55,7 +57,7 @@ namespace MyFirstCApplication
                 "+1" or "1+" => 5,
                 "1" => 0,
                 _ when float.TryParse(grade, out float result) => result,
-                _ => throw new Exception("Wprowadzono wartość spoza dopuszczalnego zakresu."),
+                _ => throw new Exception("Wprowadzono wartość spoza dopuszczalnego zakresu.\n"),
             };
 
             {

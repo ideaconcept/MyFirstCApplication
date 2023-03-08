@@ -1,9 +1,15 @@
 ﻿using MyFirstCApplication;
-using System.ComponentModel.Design;
-using System.Runtime.CompilerServices;
 
 var supervisor = new EmployeeInFile("Jan", "Kowalski", 44, 'M', "Dyrektor", 12);
 var employee = new EmployeeInMemory("Patrycja", "Nowak", 27, 'K', "Programistka C#", 4);
+
+supervisor.GradeAdded += EmployeeGradeAdded;
+employee.GradeAdded += EmployeeGradeAdded;
+
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę pracownika.\n");
+}
 
 Console.WriteLine("Witamy w programie oceny pracowników:");
 Console.WriteLine("=====================================\n");
@@ -19,7 +25,7 @@ while (true)
 
     if (choice == "1")
     {
-        Console.WriteLine("\nPrzy wprowadzaniu oceny kierownika należy podać:\n- punktację w zakresie od 7 do 100 lub\n- oceny od 1 do 6, które mają następujące wartości:\n  - 1 - 0 punktów,\n  - 2 - 20 punktów,\n  - 3 - 40 punktów,\n  - 4 - 60 punktów,\n  - 5 - 80 punktów,\n  - 6 - 100 punktów.\n Wskazaną ocenę można pomniejszyć lub powiększyć o 5 punktów wpisując przy ocenie plus (+) lub minus (-), np: 1+ lub -6.\n");
+        Console.WriteLine("\nPrzy wprowadzaniu oceny kierownika należy podać:\n- punktację w zakresie od 7 do 100 lub\n- oceny od 1 do 6, które mają następujące wartości:\n  - 1 - 0 punktów,\n  - 2 - 20 punktów,\n  - 3 - 40 punktów,\n  - 4 - 60 punktów,\n  - 5 - 80 punktów,\n  - 6 - 100 punktów.\n  Wskazaną ocenę można pomniejszyć lub powiększyć o 5 punktów wpisując przy ocenie plus (+) lub minus (-), np: 1+ lub -6.\n");
  
         while (true)
         {

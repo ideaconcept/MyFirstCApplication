@@ -2,6 +2,8 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public override event GradeAddDelegate GradeAdded;
+
         private List<float> grades = new List<float>();
         public EmployeeInMemory(string name,
                                 string surname,
@@ -13,15 +15,21 @@
         {
         }
 
+        
         public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
-                throw new Exception("Wprowadzona ocena wykracza poza dopuszczalny zakres wartości: od 0 do 100.");
+                throw new Exception("Wprowadzona ocena wykracza poza dopuszczalny zakres wartości: od 0 do 100.\n");
             }
         }
 
@@ -56,7 +64,7 @@
                         this.grades.Add(20);
                         break;
                     default:
-                        throw new Exception("Wprowadzona ocena nie jest dopuszczalną literą z zakresu A - E (a - e).");
+                        throw new Exception("Wprowadzona ocena nie jest dopuszczalną literą z zakresu A - E (a - e).\n");
                 }
             }
         }

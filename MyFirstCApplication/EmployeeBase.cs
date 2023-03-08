@@ -1,7 +1,11 @@
 ﻿namespace MyFirstCApplication
 {
     public abstract class EmployeeBase : IEmployee
+
     {
+        public delegate void GradeAddDelegate(object sender, EventArgs args);
+        public abstract event GradeAddDelegate GradeAdded;
+
         public EmployeeBase(string name, string surname, int age, char sex, string position, int seniority)
         {
             this.Name = name;
