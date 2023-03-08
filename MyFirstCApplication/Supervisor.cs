@@ -24,7 +24,7 @@
 
         public void AddGrade(string grade)
         {
-            var gradeToAdd = grade switch //Dogrzebałem się nowej składni w C# 8.0 :-)
+            var gradeToAdd = grade switch //Dogrzebałem się w necie nowej składni w C# 8.0 :-)
             {
                 "6" => 100,
                 "-6" or "6-" => 95,
