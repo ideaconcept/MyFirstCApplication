@@ -1,4 +1,5 @@
 ﻿using MyFirstCApplication;
+using System;
 
 var supervisor = new EmployeeInFile("Jan", "Kowalski", 44, 'M', "Dyrektor", 12);
 var employee = new EmployeeInMemory("Patrycja", "Nowak", 27, 'K', "Programistka C#", 4);
@@ -8,20 +9,28 @@ employee.GradeAdded += EmployeeGradeAdded;
 
 static void EmployeeGradeAdded(object sender, EventArgs args)
 {
+    Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("Dodano nową ocenę pracownika.\n");
+    Console.ResetColor();
 }
 
 Console.WriteLine("Witamy w programie oceny pracowników:");
 Console.WriteLine("=====================================\n");
-Console.WriteLine("Wybierz jedną z poniższych opcji lub Q aby zakończyć prace programu:");
+Console.WriteLine("Wybierz jedną z poniższych opcji lub X aby zakończyć prace programu:");
 Console.WriteLine("1. Kierownik (In file)");
-Console.WriteLine("2. Pracownik (In memory)\n");
+Console.WriteLine("2. Pracownik (In memory)");
+Console.WriteLine("X. Zakończ pracę programu\n");
 
 
 while (true)
 {
+    Console.ForegroundColor = ConsoleColor.Yellow;
     Console.Write("Twój wybór: ");
+    Console.ResetColor();
+
+    Console.ForegroundColor = ConsoleColor.Magenta;
     var choice = Console.ReadLine();
+    Console.ResetColor();
 
     if (choice == "1")
     {
@@ -30,8 +39,13 @@ while (true)
         while (true)
         {
             Console.WriteLine("Wprowadź ocenę dla kierownika lub q aby zakończyć wprowadzanie danych i wyliczyć wynik: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Ocena: ");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
             var ocena = Console.ReadLine();
+            Console.ResetColor();
             ocena = ocena.Replace(".", ",");
 
             if (ocena == "q")
@@ -45,17 +59,20 @@ while (true)
             }
             catch (Exception e)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Wystąpił błąd: {e.Message}");
+                Console.ResetColor();
             }
         }
 
         var statistics = supervisor.GetStatistics();
-        Console.WriteLine();
-        Console.WriteLine($"Wynik oceny pracownika: {supervisor.Name} {supervisor.Surname}");
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine($"\nWynik oceny pracownika: {supervisor.Name} {supervisor.Surname}");
         Console.WriteLine($"Średnia ocen: {statistics.Average}");
         Console.WriteLine($"Ocena: {statistics.AverageLetter}");
         Console.WriteLine($"Ocena minimalna: {statistics.Min}");
         Console.WriteLine($"Ocena maksymalna: {statistics.Max}");
+        Console.ResetColor();
         Environment.Exit(0);
     }
     else if (choice == "2")
@@ -65,8 +82,12 @@ while (true)
         while (true)
         {
             Console.WriteLine("Wprowadź ocenę pracownika lub q aby zakończyć wprowadzanie danych i wyliczyć wynik: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Ocena: ");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Magenta;
             var ocena = Console.ReadLine();
+            Console.ResetColor();
             ocena = ocena.Replace(".", ",");
 
             if (ocena == "q")
@@ -85,21 +106,24 @@ while (true)
         }
 
         var statistics = employee.GetStatistics();
-        Console.WriteLine();
-        Console.WriteLine($"Wynik oceny pracownika: {employee.Name} {employee.Surname}");
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.WriteLine($"\nWynik oceny pracownika: {employee.Name} {employee.Surname}");
         Console.WriteLine($"Średnia ocen: {statistics.Average}");
         Console.WriteLine($"Ocena: {statistics.AverageLetter}");
         Console.WriteLine($"Ocena minimalna: {statistics.Min}");
         Console.WriteLine($"Ocena maksymalna: {statistics.Max}");
+        Console.ResetColor();
         Environment.Exit(0);
     }
-    else if (choice == "q")
+    else if (choice == "x" || choice == "X")
     {
         Environment.Exit(0);
     }
     else
     {
-        Console.WriteLine("Wprowadzono złą wartość. Wybierz: 1, 2 lub q");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Wprowadzono złą wartość. Wybierz: 1, 2 lub q\n");
+        Console.ResetColor();
     }
 
 }
