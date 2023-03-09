@@ -1,4 +1,6 @@
-﻿namespace MyFirstCApplication
+﻿using static MyFirstCApplication.EmployeeBase;
+
+namespace MyFirstCApplication
 {
     public interface IEmployee
     {
@@ -15,6 +17,8 @@
         void AddGrade(long grade);
         void AddGrade(decimal grade);
         void AddGrade(int grade);
+
+        event GradeAddDelegate GradeAdded;
 
         Statistics GetStatistics();
     }

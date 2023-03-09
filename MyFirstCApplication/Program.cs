@@ -6,7 +6,7 @@ var employee = new EmployeeInMemory("Patrycja", "Nowak", 27, 'K', "Programistka 
 supervisor.GradeAdded += EmployeeGradeAdded;
 employee.GradeAdded += EmployeeGradeAdded;
 
-void EmployeeGradeAdded(object sender, EventArgs args)
+static void EmployeeGradeAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową ocenę pracownika.\n");
 }

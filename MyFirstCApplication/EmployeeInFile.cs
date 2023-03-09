@@ -5,7 +5,6 @@
         public override event GradeAddDelegate GradeAdded;
 
         private const string fileName = "grades.txt";
-        private int licznik = 0;
 
         public EmployeeInFile(string name,
                               string surname,
@@ -24,6 +23,7 @@
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
+
                     if (GradeAdded != null)
                     {
                         GradeAdded(this, new EventArgs());
@@ -93,47 +93,19 @@
         {
             var statistics = new Statistics();
 
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
             if (File.Exists(fileName))
             {
                 using (var reader = File.OpenText(fileName))
                 {
                     var line = reader.ReadLine();
-                 
+
                     while (line != null)
                     {
                         var grade = float.Parse(line);
-                        statistics.Max = Math.Max(statistics.Max, grade);
-                        statistics.Min = Math.Min(statistics.Min, grade);
-                        statistics.Average += grade;
-                        licznik += 1;
+                        statistics.AddGrade(grade);
                         line = reader.ReadLine();
                     }
                 }
-            }
-            
-            statistics.Average /= licznik;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
             }
             return statistics;
         }
