@@ -6,7 +6,7 @@
         public void ReferenceTypeComparison()
         {
             var employee1 = GetEmployee("Jacek", "Kowalski", 26);
-            var employee2 = GetEmployee("Jianna", "Nowak", 39);
+            var employee2 = GetEmployee("Joanna", "Nowak", 39);
             var employee3 = GetEmployee("Paweł", "Nowak", 42);
 
             Assert.That(employee3, Is.Not.EqualTo(employee2));

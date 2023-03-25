@@ -5,7 +5,7 @@ namespace MyFirstCApplication.Test
         [Test]
         public void MaxOfGrades()
         {
-            var employee = new Employee("Adam", "Nowak", 38);
+            var employee = new EmployeeInFile("Patrycja", "Nowak", 27, 'K', "Programistka C#", 4);
             employee.AddGrade(8);
             employee.AddGrade(7);
             employee.AddGrade(99);
@@ -17,7 +17,7 @@ namespace MyFirstCApplication.Test
         [Test]
         public void MinOfGrades()
         {
-            var employee = new Employee("Adam", "Nowak", 38);
+            var employee = new EmployeeInFile("Patrycja", "Nowak", 27, 'K', "Programistka C#", 4);
             employee.AddGrade(8);
             employee.AddGrade(20);
             employee.AddGrade(82);
@@ -29,7 +29,7 @@ namespace MyFirstCApplication.Test
         [Test]
         public void AverageOfGrades()
         {
-            var employee = new Employee("Adam", "Nowak", 38);
+            var employee = new EmployeeInFile("Patrycja", "Nowak", 27, 'K', "Programistka C#", 4);
             employee.AddGrade(2);
             employee.AddGrade(2);
             employee.AddGrade(6);
@@ -42,7 +42,7 @@ namespace MyFirstCApplication.Test
         [Test]
         public void AddGradeString()
         {
-            var employee = new Employee("Adam", "Nowak", 38);
+            var employee = new EmployeeInFile("Patrycja", "Nowak", 27, 'K', "Programistka C#", 4);
             employee.AddGrade("100");
             employee.AddGrade("20");
 
@@ -54,7 +54,7 @@ namespace MyFirstCApplication.Test
         [Test]
         public void AddGradeLetterSmallBig()
         {
-            var employee = new Employee("Adam", "Nowak", 38);
+            var employee = new EmployeeInFile("Patrycja", "Nowak", 27, 'K', "Programistka C#", 4);
             employee.AddGrade("A");
             employee.AddGrade("b");
 
@@ -66,7 +66,7 @@ namespace MyFirstCApplication.Test
         [Test]
         public void AddGradeChar()
         {
-            var employee = new Employee("Adam", "Nowak", 38);
+            var employee = new EmployeeInFile("Patrycja", "Nowak", 27, 'K', "Programistka C#", 4);
             employee.AddGrade('B');
 
             var statistics = employee.GetStatistics();
@@ -77,7 +77,7 @@ namespace MyFirstCApplication.Test
         [Test]
         public void AddNewEmployee()
         {
-            var employee = new Employee("Adam", "Nowak", 38);
+            var employee = new EmployeeInFile("Patrycja", "Nowak", 27, 'K', "Programistka C#", 4);
 
             var result = employee.Name + employee.Surname + employee.Age;
             Assert.That(result, Is.EqualTo("AdamNowak38"));
